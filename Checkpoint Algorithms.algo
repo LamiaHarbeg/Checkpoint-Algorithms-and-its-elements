@@ -1,0 +1,52 @@
+ALGORITHM checkpont_algorithm
+VAR
+    Str : STRING;
+    wordsNbr, vowelsNbr : INTEGER :=0
+    i : INTEGER;
+
+
+BEGIN
+
+    Read(Str);
+
+ FOR i FROM 0 TO Str.length-1   DO
+   IF (Str[i] === ' ') THEN 
+    wordsNbr++;
+   END_IF
+ END_FOR
+
+
+FUNCTION vowelsNumber(Str) : INTEGER
+VAR
+ j : INTEGER
+ haveSeenVowel: BOOLEAN := false;
+BEGIN
+  for (j of ToLower(str)) {    
+    switch (j) DO
+      case 'a':
+      case 'e':
+      case 'i':
+      case 'o':
+      case 'u':
+        {
+          if (haveSeenVowel) {
+            vowelsNbr++;
+            haveSeenVowel = false;
+          } else {
+            haveSeenVowel = true;
+          }
+          break;
+        }
+      default:
+        haveSeenVowel = false
+    }
+  }
+  END_SWITCH
+    RETURN vowelsNbr ;
+END
+
+
+    Write('The length of the sentence is '+ Str.length+' The number of words in the sentence is :  '+ wordsNbr + 'The number of vowels in the sentence is  '+ vowelsNbr );
+END
+
+
